@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  </head>
+  <body>
+      <a-scene>
+        <a-assets>
+          <img id="sky" src="sky1.jpg">
+        </a-assets>
+        <a-sky src="#sky"  rotation="0 0 0" scale="-1 1 1"></a-sky>
+        
+        
+          <a-assets>
+            <img id="ground" src="ground.jfif">
+          </a-assets>
+        
+          <!-- Textured plane parallel to ground. -->
+          <a-plane src="#ground" height="400" width="400" rotation="-90 0 0" repeat="50 50"></a-plane>
+        
+      <!-- <a-plane position="0 0 0" rotation="-90 0 0" width="440" height="440" color="green"></a-plane> -->
+
+      <a-entity
+          id="bowser-model"
+          gltf-model="finalram.glb"
+          position="0 0 0"
+          rotation="1 1 1"
+          scale="0.05 0.05 0.05"
+        >
+      </a-entity>
+      <a-light type="directional" color="#ffd284"  position="0.393 1.160 1" intensity="0.7"></a-light>
+    
+      <a-entity id="cameraRig" rotation="0 0 0">
+        <a-entity
+          id="cameraContainer"
+          look--controls
+          animation__rotate="property: rotation; to: 0 360 0; dur: 50000; easing: linear; loop: true;"
+          animation__move="property: position; to: 0 8 0; dur: 50000; easing: linear; loop: true;"
+        >
+          <a-camera position="0 1 7.5" look-controls></a-camera>
+        </a-entity>
+      </a-entity>
+    <script>
+      // Set initial rotation of the camera container
+      document.getElementById('cameraContainer').setAttribute('rotation', '0 0 0');
+    </script>
+    <!-- <a-entity position = "0 0 5"><a-camera></a-camera></a-entity> -->
+  </a-scene>
+  </body>
+</html>
